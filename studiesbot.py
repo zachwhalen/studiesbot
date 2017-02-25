@@ -38,14 +38,31 @@ subject = random.choice(subjects)
 # Add "Studies" to the newly picked subject.
 studies = subject + " Studies"
 
+# Make it scarier
+ominousness = [
+        "Ominous " + studies,
+        "Sinister " + studies,
+        "Apocalyptic " + studies,
+        "Dangerous " + studies,
+        "Scary " + studies,
+        "Indoctrination in " + studies,
+        "So-called \"" + studies + "\" soon to be mandatory",
+        "Something called \"" + studies + "\"",
+        "Taxpayer-funded " + studies,
+        "Liberal brainwashing like  \"" + studies + "\"",
+        "Supressing free speech for " + studies]
+
+# pick one
+scarier = random.choice(ominousness)
+
 # If the subject matches one of the blacklisted words, exit it.
 # You could just make it choose again, but I wanted to terminate the bot as punishment.
-if wordfilter.is_blacklisted(studies) == 1:
-    print "BAD: " + studies
+if wordfilter.is_blacklisted(scarier) == 1:
+    print "BAD: " + scarier
     raise SystemExit
 
 # Display output on the console
-print studies
+print scarier
 
 # Send to Twitter
-api.update_status(status=studies)
+api.update_status(status=scarier)
